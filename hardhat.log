@@ -1,0 +1,5 @@
+Error HHE22: Trying to use a non-local installation of Hardhat, which is not supported.
+
+Please install Hardhat locally using pnpm, npm or yarn, and try again.
+
+For more info go to https://hardhat.org/HHE22 or run Hardhat with --show-stack-traces
