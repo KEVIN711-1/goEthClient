@@ -19,9 +19,9 @@ contract KevinNFT is ERC721, ERC721URIStorage, Ownable {
     event nftTransfer( uint256 value, address to);
     event nftMint( address owner, uint256 tokenId, string uri);
 
-    constructor ( string memory _name, string memory  _symbol )
+    constructor ( string memory _name, string memory _symbol )
         ERC721( _name, _symbol)
-        Ownable(msg.sender) {
+        Ownable() {
     }
 
     function mintNFT ( string calldata uri ) public payable {
@@ -61,5 +61,10 @@ contract KevinNFT is ERC721, ERC721URIStorage, Ownable {
 
     function supportsInterface(bytes4 interfaceId) public view virtual override(ERC721, ERC721URIStorage) returns (bool) {
         return super.supportsInterface(interfaceId);
+    }
+
+    // ✅ 修复：添加 override
+    function _burn(uint256 tokenId) internal override(ERC721, ERC721URIStorage) {
+        super._burn(tokenId);
     }
 }
